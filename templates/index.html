@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+    button {
+        position: relative;
+        left: 0px;
+        top: -4px;
+        height: 50px;
+    }
+
+    .video-container {
+        position: relative;
+        height
+    }
+
+    .video,
+    .canvas {
+        border: 1px solid #ccc;
+        margin-top: 20px;
+        max-width: 100%;
+    }
+
+    .w3-sidebar {
+        position: fixed;
+        /* Keep sidebar fixed */
+        top: 0;
+        /* Adjust top position as needed */
+        left: 0;
+        width: 250px;
+        /* Adjust sidebar width */
+        height: 100%;
+        /* Full height */
+        background-color: white;
+        z-index: 1;
+        /* Ensure sidebar appears above other content */
+        overflow-y: auto;
+        /* Allow vertical scrolling */
+    }
+
+    /* Adjusted container styles */
+    .w3-container {
+        margin-left: 250px;
+        /* Adjust margin to accommodate sidebar width */
+        padding: 20px;
+        /* Optional: Add padding for content */
+    }
+</style>
+</style>
+
+<body>
+
+    <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Đóng &times;</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'London'),w3_close()">Trực
+            tiếp</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Paris'),w3_close()">Thành
+            viên</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Tokyo'),w3_close()">Thống
+            kê</button>
+    </div>
+
+
+
+    <div id="main">
+
+        <div class="w3-teal">
+
+            <div style="margin-left:0px">
+                <div class="w3-container">
+
+                    <h1> <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;</button>
+                        Hệ thống giám sát bãi giữ xe tự động</h1>
+                </div>
+            </div>
+        </div>
+
+        <div id="London" class="w3-container city" style="display:none">
+            <div class="video-container">
+                <video id="videoElement" autoplay></video>
+                <canvas id="canvasElement"></canvas>
+            </div>
+        </div>
+
+        <div id="Paris" class="w3-container city" style="display:none">
+            <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" id="mySidebar1">
+                <button onclick="openSection('Demo1')" class="w3-button w3-block w3-black w3-left-align">Open Section
+                    1</button>
+                <button onclick="openSection('Demo2')" class="w3-button w3-block w3-black w3-left-align">Open Section
+                    2</button>
+            </div>
+
+            <div id="Demo1" class="w3-hide w3-container">
+                erfreffrefrefrefrefrefmrekfmekfmkdfmklqefmkemklemkflwemkfkmlmrkfrkemrefkmrmkfrmkr
+            </div>
+
+            <div id="Demo2" class="w3-hide w3-container">
+                <p>Some other text..</p>
+            </div>
+        </div>
+
+
+        <script>
+            function w3_open() {
+                document.getElementById("main").style.marginLeft = "0%";
+                document.getElementById("mySidebar").style.width = "25%";
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("openNav").style.display = 'none';
+            }
+            function w3_close() {
+                document.getElementById("main").style.marginLeft = "0%";
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("openNav").style.display = "inline-block";
+            }
+            function w3_close1() {
+                document.getElementById("main").style.marginLeft = "0%";
+                document.getElementById("bang1").style.display = "none";
+                document.getElementById("openNav").style.display = "inline-block";
+            }
+            function w3_close2() {
+                document.getElementById("mySidebar1").style.display = "none";
+            }
+            function openSection(id) {
+                var section1 = document.getElementById('Demo1');
+                var section2 = document.getElementById('Demo2');
+
+                if (id === 'Demo1') {
+                    section1.classList.add('w3-show');
+                    section2.classList.remove('w3-show');
+                } else if (id === 'Demo2') {
+                    section1.classList.remove('w3-show');
+                    section2.classList.add('w3-show');
+                }
+            }
+            function openCity(evt, cityName) {
+                var i, x, tablinks;
+                x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+                for (i = 0; i < x.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" w3-red", "");
+                }
+                document.getElementById(cityName).style.display = "block";
+                evt.currentTarget.className += " w3-red";
+
+            }
+            function openname(evt, cityName) {
+                var i, x, tablinks;
+                x = document.getElementsByClassName("city");
+                for (i = 0; i < x.length; i++) {
+                    x[i].style.display = "none";
+                }
+                tablinks = document.getElementsByClassName("tablink");
+            }
+            function myFunction(id) {
+                var x = document.getElementById(id);
+                if (x.className.indexOf("w3-show") == -1) {
+                    x.className += " w3-show";
+                    x.previousElementSibling.className =
+                        x.previousElementSibling.className.replace("w3-black", "w3-red");
+                } else {
+                    x.className = x.className.replace(" w3-show", "");
+                    x.previousElementSibling.className =
+                        x.previousElementSibling.className.replace("w3-red", "w3-black");
+                }
+            }
+            const videoElement = document.getElementById('videoElement');
+            const canvasElement = document.getElementById('canvasElement');
+            const ctx = canvasElement.getContext('2d');
+            let stream;
+
+            async function startCamera() {
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                    videoElement.srcObject = stream;
+                } catch (error) {
+                    console.error('Error accessing camera: ', error);
+                }
+            }
+
+            function detectObjects() {
+                const videoWidth = videoElement.videoWidth;
+                const videoHeight = videoElement.videoHeight;
+                canvasElement.width = videoWidth;
+                canvasElement.height = videoHeight;
+
+                ctx.drawImage(videoElement, 0, 0, videoWidth, videoHeight);
+
+                fetch('/detect', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ image: canvasElement.toDataURL('image/jpeg') })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        drawAnnotatedFrame(data.annotated_frame);
+                        requestAnimationFrame(detectObjects);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        requestAnimationFrame(detectObjects);
+                    });
+            }
+
+            function drawAnnotatedFrame(imageData) {
+                const img = new Image();
+                img.onload = function () {
+                    ctx.drawImage(img, 0, 0, canvasElement.width, canvasElement.height);
+                };
+                img.src = imageData;
+            }
+
+            startCamera();
+            detectObjects();
+            async function fetchData() {
+                try {
+                    const response = await fetch('/data');
+                    const data = await response.json();
+                    displayData(data);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+
+            function displayData(data) {
+                const table = document.getElementById('data-table');
+                table.innerHTML = '';
+
+                const headerRow = document.createElement('tr');
+                const keys = Object.keys(data[0]).reverse(); // Reverse the order of keys
+                for (const key of keys) {
+                    const headerCell = document.createElement('th');
+                    headerCell.textContent = key;
+                    headerRow.appendChild(headerCell);
+                }
+                table.appendChild(headerRow);
+
+                data.forEach(row => {
+                    const dataRow = document.createElement('tr');
+                    for (const key of keys) {
+                        const dataCell = document.createElement('td');
+                        dataCell.textContent = row[key];
+                        dataRow.appendChild(dataCell);
+                    }
+                    table.appendChild(dataRow);
+                });
+            }
+
+            setInterval(fetchData, 5000); // Fetch data every 5 seconds
+
+            document.addEventListener('DOMContentLoaded', fetchData);
+        </script>
+        </script>
+
+</body>
+
+</html>
